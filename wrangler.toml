@@ -9,14 +9,3 @@ NODE_ENV = "production"
 # Enable Cloudflare Pages Functions
 # The functions directory will be automatically detected
 compatibility_flags = ["nodejs_compat"]
-
-# For KV storage (if needed for persistent data)
-# [[kv_namespaces]]
-# binding = "DISCORD_TOKENS"
-# id = "your-kv-namespace-id"
-
-# For D1 database (if needed for persistent data)
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "visual-control-panel"
-# database_id = "your-d1-database-id"
