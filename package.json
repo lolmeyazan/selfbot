@@ -4,7 +4,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "tsx server/index.ts",
+    "dev": "tsx server/index.js",
     "dev:cf": "wrangler pages dev ./ --port 8788 --compatibility-flags=\"nodejs_compat\"",
     "build": "node script/build.js",
     "build:client": "vite build",
@@ -105,6 +105,7 @@
     "bufferutil": "^4.0.8"
   }
 }
+
 
 
 
