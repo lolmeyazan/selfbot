@@ -1,6 +1,8 @@
 name = "selfbot"
 compatibility_date = "2026-02-20"
-pages_build_output_dir = "dist" # هذا السطر مهم جدًا لـ Cloudflare Pages
+
+# هذا السطر هو الأهم: يخبر Cloudflare أن كل شيء جاهز في هذا المجلد
+pages_build_output_dir = "dist"
 
 [build]
 command = "npm run build"
