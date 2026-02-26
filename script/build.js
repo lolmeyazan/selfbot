@@ -72,7 +72,7 @@ async function buildAll() {
     const externals = allDeps.filter((dep) => !allowlist.includes(dep));
 
     await esbuild({
-      entryPoints: ["server/index.ts"],
+      entryPoints: ["server/index.js"],
       platform: "node",
       bundle: true,
       format: "cjs",
@@ -117,6 +117,7 @@ buildAll().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+
 
 
 
