@@ -84,7 +84,7 @@ async function buildAll() {
       external: externals,
       logLevel: "info",
     });
-} else {
+  } else {
     const outputDir = "dist/public";
     
     console.log("preparing Cloudflare Pages functions...");
@@ -111,6 +111,7 @@ async function buildAll() {
     console.log("_routes.json created at " + __dirname);
   }
 }
+
 buildAll().catch((err) => {
   console.error(err);
   process.exit(1);
