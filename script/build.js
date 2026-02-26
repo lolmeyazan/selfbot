@@ -91,7 +91,7 @@ async function buildAll() {
     
     try {
       // Copy functions to PROJECT ROOT (not dist/public/functions)
-      await copyDir("functions", path.join(__dirname, "functions"));
+      await copyDir("functions", path.join(__dirname, "..", "functions"));
       console.log(`functions copied to ${__dirname}/functions`);
     } catch (err) {
       console.log("No functions directory found, skipping...");
@@ -104,10 +104,11 @@ async function buildAll() {
       exclude: []
     };
     
-    await writeFile(
-      path.join(__dirname, "_routes.json"),
-      JSON.stringify(routesJson, null, 2)
-    );
+   // NEW (correct):
+await writeFile(
+  path.join(__dirname, "..", "_routes.json"),
+  JSON.stringify(routesJson, null, 2)
+);
     console.log("_routes.json created at " + __dirname);
   }
 }
@@ -116,5 +117,6 @@ buildAll().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+
 
 
