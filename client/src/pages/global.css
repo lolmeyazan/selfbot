@@ -1,0 +1,441 @@
+/* للصور الدائرية */
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #404249;
+}
+
+/* للسيرفرات */
+.guild-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  transition: border-radius 0.2s;
+}
+
+.guild-icon:hover {
+  border-radius: 30%;
+}
+
+/* للقنوات المحددة */
+.channel-selected {
+  background-color: #404249;
+  color: white;
+}
+
+/* للقنوات العادية */
+.channel-item {
+  color: #949ba4;
+  transition: background-color 0.1s;
+}
+
+.channel-item:hover {
+  background-color: #35373c;
+  color: #dbdee1;
+}
+
+/* ==================== Discord Dark Theme (#313338) ==================== */
+
+:root {
+  --discord-bg-primary: #313338;
+  --discord-bg-secondary: #2b2d31;
+  --discord-bg-tertiary: #1e1f22;
+  --discord-bg-modifier: #26272d;
+  --discord-text-normal: #dbdee1;
+  --discord-text-muted: #949ba4;
+  --discord-text-link: #00b0f4;
+  --discord-interactive-normal: #dbdee1;
+  --discord-interactive-hover: #dcddde;
+  --discord-interactive-active: #ffffff;
+  --discord-interactive-muted: #4f545c;
+  --discord-header-primary: #f2f3f5;
+  --discord-header-secondary: #b5bac1;
+  --discord-header-tertiary: #949ba4;
+  --discord-accent: #5865f2;
+  --discord-accent-blue: #5865f2;
+  --discord-green: #23a559;
+  --discord-yellow: #f0b232;
+  --discord-red: #da373c;
+  --discord-brand: #5865f2;
+  --discord-link: #00b0f4;
+  --discord-divider: #1e1f22;
+  --discord-scrollbar: #202225;
+  --discord-scrollbar-thumb: #202225;
+  --discord-scrollbar-track: #2e3338;
+  --discord-channel-text-area: #383a40;
+  --discord-message-hover: #32353b;
+}
+
+body {
+  background-color: var(--discord-bg-primary);
+  color: var(--discord-text-normal);
+  font-family: 'gg sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--discord-scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--discord-scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #18191c;
+}
+
+/* ==================== Context Menu ==================== */
+
+.context-menu {
+  position: fixed;
+  z-index: 1000;
+  min-width: 192px;
+  max-width: 320px;
+  padding: 6px 0;
+  background: var(--discord-bg-secondary);
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+  color: var(--discord-text-normal);
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  margin: 0 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.1s;
+}
+
+.context-menu-item:hover {
+  background: var(--discord-accent-blue);
+  color: white;
+}
+
+.context-menu-item.danger {
+  color: var(--discord-red);
+}
+
+.context-menu-item.danger:hover {
+  background: var(--discord-red);
+  color: white;
+}
+
+.context-menu-divider {
+  height: 1px;
+  background: var(--discord-divider);
+  margin: 4px 8px;
+}
+
+.context-menu-label {
+  padding: 8px 16px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--discord-text-muted);
+  text-transform: uppercase;
+}
+
+/* ==================== Profile Modal ==================== */
+
+.profile-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  background: var(--discord-bg-secondary);
+  border-radius: 8px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.32);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.profile-modal-banner {
+  height: 120px;
+  background: linear-gradient(135deg, var(--discord-accent-blue), #9b59b6);
+  position: relative;
+}
+
+.profile-modal-avatar {
+  position: absolute;
+  bottom: -40px;
+  left: 16px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid var(--discord-bg-secondary);
+  background: var(--discord-bg-tertiary);
+}
+
+.profile-modal-content {
+  padding: 40px 16px 16px;
+}
+
+.profile-modal-username {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--discord-header-primary);
+}
+
+.profile-modal-discriminator {
+  font-size: 14px;
+  color: var(--discord-text-muted);
+}
+
+.profile-modal-bio {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--discord-text-normal);
+  line-height: 1.4;
+}
+
+.profile-modal-roles {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.profile-modal-role {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.profile-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-modal-close:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ==================== Status Indicators ==================== */
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  border: 3px solid var(--discord-bg-secondary);
+}
+
+.status-online {
+  background: var(--discord-green);
+}
+
+.status-idle {
+  background: var(--discord-yellow);
+}
+
+.status-dnd {
+  background: var(--discord-red);
+}
+
+.status-offline {
+  background: var(--discord-text-muted);
+}
+
+/* ==================== Server Sidebar ==================== */
+
+.server-sidebar {
+  background: var(--discord-bg-tertiary);
+}
+
+.server-icon-wrapper {
+  position: relative;
+}
+
+.server-icon-badge {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: var(--discord-accent-blue);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 8px;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* ==================== Buttons ==================== */
+
+.btn-discord {
+  background: var(--discord-accent-blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-discord:hover {
+  background: #4752c4;
+}
+
+.btn-discord-secondary {
+  background: var(--discord-bg-modifier);
+  color: var(--discord-interactive-normal);
+}
+
+.btn-discord-secondary:hover {
+  background: #3f4147;
+  color: var(--discord-interactive-hover);
+}
+
+.btn-discord-danger {
+  background: var(--discord-red);
+  color: white;
+}
+
+.btn-discord-danger:hover {
+  background: #c42f35;
+}
+
+/* ==================== Input Fields ==================== */
+
+.input-discord {
+  background: var(--discord-bg-modifier);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: var(--discord-text-normal);
+  font-size: 14px;
+  width: 100%;
+}
+
+.input-discord:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--discord-accent-blue);
+}
+
+.input-discord::placeholder {
+  color: var(--discord-interactive-muted);
+}
+
+/* ==================== Tooltips ==================== */
+
+.tooltip {
+  position: absolute;
+  background: var(--discord-bg-tertiary);
+  color: var(--discord-text-normal);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  white-space: nowrap;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  border: 6px solid transparent;
+}
+
+/* ==================== Badges ==================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.badge-admin {
+  background: var(--discord-red);
+  color: white;
+}
+
+.badge-mod {
+  background: var(--discord-green);
+  color: white;
+}
+
+.badge-vip {
+  background: var(--discord-yellow);
+  color: black;
+}
+
+/* ==================== Animations ==================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.2s ease-out;
+}
+
+/* ==================== Overlay ==================== */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
