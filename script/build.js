@@ -1,6 +1,6 @@
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
-import { rm, readFile, copyFile, mkdir, readdir } from "fs/promises";
+import { rm, readFile, copyFile, mkdir, readdir, writeFile } from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -8,7 +8,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // server deps to bundle to reduce openat(2) syscalls
-// which helps cold start times
 const allowlist = [
   "@google/generative-ai",
   "axios",
@@ -86,35 +85,34 @@ async function buildAll() {
       logLevel: "info",
     });
 } else {
-    // تحديد المسار النهائي للمجلد الذي سترفعه
-    const outputDir = "dist/public"; 
+    const outputDir = "dist/public";
     
     console.log("preparing Cloudflare Pages functions...");
     
     try {
-      // نسخ مجلد الـ functions إلى داخل المجلد العام
-      await copyDir("functions", path.join(outputDir, "functions"));
-      console.log(`functions copied to ${outputDir}/functions`);
+      // Copy functions to PROJECT ROOT (not dist/public/functions)
+      await copyDir("functions", path.join(__dirname, "functions"));
+      console.log(`functions copied to ${__dirname}/functions`);
     } catch (err) {
       console.log("No functions directory found, skipping...");
     }
     
-    // إنشاء ملف _routes.json داخل المجلد العام
+    // Create _routes.json at PROJECT ROOT (not in dist/public)
     const routesJson = {
       version: 1,
       include: ["/api/*"],
       exclude: []
     };
     
-    const { writeFile } = await import('fs/promises');
     await writeFile(
-      path.join(outputDir, "_routes.json"), // المسار الصحيح هنا
+      path.join(__dirname, "_routes.json"),
       JSON.stringify(routesJson, null, 2)
     );
-    console.log("_routes.json created in " + outputDir);
+    console.log("_routes.json created at " + __dirname);
   }
 }
 buildAll().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+```__
