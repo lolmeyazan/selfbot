@@ -6,6 +6,8 @@ pages_build_output_dir = "./dist"
 [vars]
 NODE_ENV = "production"
 
+[functions]
+directory = "./functions" 
 # Enable Cloudflare Pages Functions
 # The functions directory will be automatically detected
 compatibility_flags = ["nodejs_compat"]
@@ -20,4 +22,5 @@ compatibility_flags = ["nodejs_compat"]
 # binding = "DB"
 # database_name = "visual-control-panel"
 # database_id = "your-d1-database-id"
+
 
