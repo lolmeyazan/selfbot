@@ -1,27 +1,25 @@
-name = "visual-control-panel"
-compatibility_date = "2024-01-01"
-pages_build_output_dir = "./dist/public"
+name = "selfbot"
+compatibility_date = "2026-02-20"
 
-# Cloudflare Pages configuration
-[vars]
-NODE_ENV = "production"
+[assets]
+directory = "./dist/public"
+not_found_handling = "single-page-application"
 
-[functions]
-directory = "./functions" 
-# Enable Cloudflare Pages Functions
-# The functions directory will be automatically detected
-compatibility_flags = ["nodejs_compat"]
+# Keep your API routes
+[[routes]]
+pattern = "/api/discord-proxy"
+zone_name = "devself.qzz.io"
+script_name = "selfname"
 
-# For KV storage (if needed for persistent data)
-# [[kv_namespaces]]
-# binding = "DISCORD_TOKENS"
-# id = "your-kv-namespace-id"
+[[routes]]
+pattern = "/api/discord-selfbot-presence"
+zone_name = "devself.qzz.io"
+script_name = "selfbot"
 
-# For D1 database (if needed for persistent data)
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "visual-control-panel"
-# database_id = "your-d1-database-id"
+# ... (add all your other API routes)
 
-
-
+# Add this catch-all for static assets
+[[routes]]
+pattern = "/*"
+zone_name = "devself.qzz.io"
+script_name = "selfbot"
