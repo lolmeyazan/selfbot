@@ -85,19 +85,21 @@ async function buildAll() {
       external: externals,
       logLevel: "info",
     });
-  } else {
-    // For Cloudflare, copy functions to dist
+} else {
+    // تحديد المسار النهائي للمجلد الذي سترفعه
+    const outputDir = "dist/public"; 
+    
     console.log("preparing Cloudflare Pages functions...");
     
-    // Copy functions directory to dist
     try {
-      await copyDir("functions", "dist/functions");
-      console.log("functions copied to dist/functions");
+      // نسخ مجلد الـ functions إلى داخل المجلد العام
+      await copyDir("functions", path.join(outputDir, "functions"));
+      console.log(`functions copied to ${outputDir}/functions`);
     } catch (err) {
       console.log("No functions directory found, skipping...");
     }
     
-    // Create _routes.json for Cloudflare Pages
+    // إنشاء ملف _routes.json داخل المجلد العام
     const routesJson = {
       version: 1,
       include: ["/api/*"],
@@ -106,13 +108,12 @@ async function buildAll() {
     
     const { writeFile } = await import('fs/promises');
     await writeFile(
-      path.join("dist", "_routes.json"),
+      path.join(outputDir, "_routes.json"), // المسار الصحيح هنا
       JSON.stringify(routesJson, null, 2)
     );
-    console.log("_routes.json created");
+    console.log("_routes.json created in " + outputDir);
   }
 }
-
 buildAll().catch((err) => {
   console.error(err);
   process.exit(1);
