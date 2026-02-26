@@ -4,17 +4,18 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    ".": "node server/index.js",
     "dev": "tsx server/index.ts",
+    "dev:cf": "wrangler pages dev ./ --port 8788 --compatibility-flags=\"nodejs_compat\"",
     "build": "node script/build.js",
     "build:client": "vite build",
-    "build:cf": "node script/build.js --cf",
+    "build:cf": "node script/build.js --cf && cp -r server/functions dist/ 2>/dev/null || :",
     "start": "NODE_ENV=production node dist/index.cjs",
-    "start:cf": "npm run build:cf && wrangler pages dev dist/public --port 8788",
-    "deploy:cf": "wrangler pages project create visual-control-panel --compatibility-date=2024-01-01 2>/dev/null || true && wrangler pages deploy dist/public",
-    "deploy:cf:prod": "npm run build:cf && wrangler pages deploy dist/public --production",
+    "preview:cf": "npm run build:cf && wrangler pages dev dist/public --port 8788 --compatibility-flags=\"nodejs_compat\"",
+    "deploy:cf": "npm run build:cf && wrangler pages deploy dist/public --project-name=selfbot",
+    "deploy:cf:prod": "npm run build:cf && wrangler pages deploy dist/public --project-name=selfbot --branch=main",
     "check": "tsc",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "clean": "rm -rf dist .wrangler"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
