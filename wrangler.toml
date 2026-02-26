@@ -1,25 +1,9 @@
 name = "selfbot"
 compatibility_date = "2026-02-20"
 
-[assets]
-directory = "./dist/public"
-not_found_handling = "single-page-application"
+[build]
+command = "npm run build"
+directory = "dist"
 
-# Keep your API routes
-[[routes]]
-pattern = "/api/discord-proxy"
-zone_name = "devself.qzz.io"
-script_name = "selfname"
-
-[[routes]]
-pattern = "/api/discord-selfbot-presence"
-zone_name = "devself.qzz.io"
-script_name = "selfbot"
-
-# ... (add all your other API routes)
-
-# Add this catch-all for static assets
-[[routes]]
-pattern = "/*"
-zone_name = "devself.qzz.io"
-script_name = "selfbot"
+[functions]
+directory = "dist/_routes.js"
